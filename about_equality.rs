@@ -1,5 +1,3 @@
-mod equality {
-
 		#[test]
 		fn the_equals_operator_requires_the_eq_trait() {
 				
@@ -18,4 +16,3 @@ mod equality {
 
 		}
 
-}

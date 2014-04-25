@@ -1,6 +1,4 @@
 #[cfg(test)]
-mod assignment {
-
 		#[test]
 		fn variables_are_single_assignment() {
 				
@@ -18,4 +16,3 @@ mod assignment {
 				assert!(a == 2);
 		}
 
-}
