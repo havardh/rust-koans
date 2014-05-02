@@ -1,1 +1,5 @@
+#![feature(macro_rules)]
 extern crate collections;
+extern crate sync;
+mod koans;
+
