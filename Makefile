@@ -7,4 +7,4 @@ all: about_*.rs
 	rm $(ASM)
 
 run: all
-	./koans
+	./koans | python script/pretty-print.py
