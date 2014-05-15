@@ -2,3 +2,4 @@
 extern crate collections;
 extern crate sync;
 mod koans;
+mod util;
