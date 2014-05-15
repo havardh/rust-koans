@@ -74,11 +74,11 @@ fn can_match_() {
 
         match original.as_slice() {
             //[_, ..rest] => ~"",
-            _ => ~"",
+            _ => "".to_owned(),
         }
 
     }
 
 
-    reverse(~"test");
+    reverse("test".to_owned());
 }

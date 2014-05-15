@@ -14,8 +14,8 @@ mod stack {
 
     #[test]
     fn closes_as_expected() {
-                    
-        let var = "hi";        
+
+        let var = "hi";
         let ident = | x | x;
 
         assert_eq!(ident(var), var);
@@ -24,7 +24,7 @@ mod stack {
 
     #[test]
     fn can_be_returned_from_function() {
-        
+
         fn func() -> (|| -> &'static str) {
             || ""
         }
@@ -35,7 +35,7 @@ mod stack {
 
     #[test]
     fn cannot_be_returned_from_stack_frame() {
-    
+
         // compilation error
         //fn func(x: int) -> (|| -> int) {
         //    || -> int x
@@ -48,28 +48,28 @@ mod stack {
     #[test]
     fn used_as_parameters_in_functions() {
 
-        let a = ~[1, 2, 3];
-        
-        let b: ~[int] = a.iter().map(|&x| x).collect();
-        
+        let a = vec!(1, 2, 3);
+
+        let b = a.iter().map(|&x| x).collect();
+
         assert!(a == b);
         assert!(b == a);
-        
+
     }
-    
+
 }
 
 mod owned {
 
     #[test]
     fn can_be_returned_from_stack_frame() {
-        
+
         fn func(x: int) -> (proc() -> int) {
             proc() -> int { return x }
         }
 
         assert_eq!(func(1)(), 1);
-        
+
     }
 
 }

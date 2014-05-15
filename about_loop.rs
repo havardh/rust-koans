@@ -2,11 +2,11 @@ mod fors {
 
     #[test]
     fn iterates_over_iterables() {
-        
-        let arr : Vec<~int> = vec!{~1,~3,~5};
+
+        let arr : Vec<Box<int>> = vec!{box 1, box 3, box 5};
 
         let mut sum = 0;
-        for &~i in arr.iter() {
+        for &box i in arr.iter() {
             sum += i;
         }
 
@@ -26,7 +26,7 @@ mod fors {
         }
 
         assert_eq!(a, 4);
-        
+
     }
 
 }
@@ -35,7 +35,7 @@ mod loops {
 
     #[test]
     fn defines_the_while_true() {
-        
+
         loop { break; }
         assert!(true);
 

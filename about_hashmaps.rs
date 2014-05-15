@@ -13,11 +13,11 @@ fn hashmap_can_map_to_traits() {
         fn set(&mut self, val: int) { self.elem = val; }
     }
 
-    let mut map : HashMap<int, ~Getter> = HashMap::new();
+    let mut map : HashMap<int, Box<Getter>> = HashMap::new();
 
-    let v : ~Getter = ~GetElem{ elem: 1 };
+    let v : Box<Getter> = box GetElem{ elem: 1 };
     map.insert(1, v);
-    
+
     {
         let w = map.get_mut(&1);
         w.set(2);
@@ -26,5 +26,3 @@ fn hashmap_can_map_to_traits() {
     let u = map.get(&1);
     assert_eq!(u.get(), 2);
 }
-
-
