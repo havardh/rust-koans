@@ -93,3 +93,25 @@ fn channels_are_async() {
     assert!(true);
 
 }
+
+#[test]
+fn a_channel_can_have_multiple_senders() {
+
+    let (tx, rx) = channel();
+
+    for _ in range(0,10) {
+
+        let ctx = tx.clone();
+        spawn(proc() {
+            ctx.send(1);
+        });
+
+    }
+
+    let mut x = 0;
+    for _ in range(0,10) {
+        x += rx.recv();
+    }
+
+    assert_eq!(x, 10);
+}

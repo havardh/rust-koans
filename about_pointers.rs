@@ -1,27 +1,27 @@
 #[test]
 fn can_be_created_and_deferenced() {
-    
+
     let a : ~int = ~0;
     assert_eq!(*a, 0);
-    
+
 }
 
 #[test]
 fn can_reside_a_lot_of_places() {
-    
+
     let _on_the_stack =  1;
     let _wat          = &2;
     let _owned_box    = ~3;
 
 }
 
-mod owned {
+mod a_owned_pointer {
 
     #[test]
-    fn copying_is_deep() {
-        
+    fn is_moved_on_assigment() {
+
         let p1 :~int = ~0;
-        { 
+        {
             let mut p2 = p1;
 
             assert_eq!(*p2, 0);
@@ -29,21 +29,26 @@ mod owned {
             assert_eq!(*p2, 1);
         }
         // p1 has been moved and this is a compilation error
-        // assert_eq!(*p1, 0); 
+        //assert_eq!(*p1, 0);
     }
 
     #[test]
-    fn name_of_test_case() {
-        
+    fn coerses_to_a_reference() {
+
+        let p1 = ~1;
+        let p2 : &int = p1;
+
+        assert_eq!(*p1, *p2);
+
     }
-    
+
 }
 
-mod borrowed {
+mod a_reference {
 
     #[test]
-    fn copy_is_shallow() {
-        
+    fn is_copied_on_assignment() {
+
         let p1 : &mut int = &mut 0;
         {
             let p2 : &mut int = p1;
@@ -53,7 +58,15 @@ mod borrowed {
             assert_eq!(*p2, 1);
         }
         assert_eq!(*p1, 1);
+    }
 
+    #[test]
+    fn coerses_to_a_owned_pointer() {
+
+        let p1 = ~1;
+        let p2 : &int = p1;
+
+        assert_eq!(*p1, *p2);
 
     }
 
