@@ -1,4 +1,8 @@
 #![feature(macro_rules)]
+#![feature(phase)]
 extern crate collections;
 extern crate sync;
-mod util;
+extern crate core;
+extern crate regex;
+#[phase(syntax)]
+extern crate regex_macros;

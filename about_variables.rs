@@ -1,4 +1,3 @@
-use util::static_check_type;
 
 #[test]
 fn variables_are_assigned_in_let_statements() {
@@ -36,15 +35,33 @@ fn values_can_be_copied() {
 
 }
 
+#[test]
+fn can_be_redefined() {
 
+    let _a = 1;
+    let _a = 2;
+
+    assert_eq!(_a, 2);
+
+}
+
+#[test]
+fn can_be_assigned_value_from_expression() {
+
+    let a = 1 + 2;
+
+    assert_eq!(a, 3);
+
+}
 
 #[test]
 fn type_is_specifed_in_let_statement() {
 
-
+    use core::any::Any;
+    use std::intrinsics::TypeId;
 
     let a : int = 100;
 
-    static_check_type::<int>(a);
+    assert_eq!(TypeId::of::<int>(), a.get_type_id());
 
 }
