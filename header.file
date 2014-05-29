@@ -4,5 +4,6 @@ extern crate collections;
 extern crate sync;
 extern crate core;
 extern crate regex;
+extern crate libc;
 #[phase(syntax)]
 extern crate regex_macros;
